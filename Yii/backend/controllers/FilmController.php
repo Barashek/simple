@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use common\models\Comment;
 use Yii;
 use backend\models\Film;
 use backend\models\FilmSearch;
@@ -52,8 +53,14 @@ class FilmController extends Controller
      */
     public function actionView($id)
     {
+        $commens = Comment::FindAll([
+            'instance_name' => 'film',
+            'instance_record_id' => $id
+        ]);
+
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'comments' => $commens,
         ]);
     }
 

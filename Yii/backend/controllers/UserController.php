@@ -3,16 +3,16 @@
 namespace backend\controllers;
 
 use Yii;
-use backend\models\FilmGenre;
-use backend\models\FilmGenreSearch;
+use common\models\User;
+use backend\models\UserSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * FilmGenreController implements the CRUD actions for FilmGenre model.
+ * UserController implements the CRUD actions for User model.
  */
-class FilmgenreController extends Controller
+class UserController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -30,12 +30,12 @@ class FilmgenreController extends Controller
     }
 
     /**
-     * Lists all FilmGenre models.
+     * Lists all User models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new FilmGenreSearch();
+        $searchModel = new UserSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class FilmgenreController extends Controller
     }
 
     /**
-     * Displays a single FilmGenre model.
+     * Displays a single User model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -58,13 +58,13 @@ class FilmgenreController extends Controller
     }
 
     /**
-     * Creates a new FilmGenre model.
+     * Creates a new User model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new FilmGenre();
+        $model = new User();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -76,7 +76,7 @@ class FilmgenreController extends Controller
     }
 
     /**
-     * Updates an existing FilmGenre model.
+     * Updates an existing User model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -96,7 +96,7 @@ class FilmgenreController extends Controller
     }
 
     /**
-     * Deletes an existing FilmGenre model.
+     * Deletes an existing User model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -110,15 +110,15 @@ class FilmgenreController extends Controller
     }
 
     /**
-     * Finds the FilmGenre model based on its primary key value.
+     * Finds the User model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return FilmGenre the loaded model
+     * @return User the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = FilmGenre::findOne($id)) !== null) {
+        if (($model = User::findOne($id)) !== null) {
             return $model;
         }
 

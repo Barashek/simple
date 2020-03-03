@@ -3,16 +3,16 @@
 namespace backend\controllers;
 
 use Yii;
-use backend\models\FilmGenre;
-use backend\models\FilmGenreSearch;
+use common\models\Comment;
+use backend\models\CommentSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * FilmGenreController implements the CRUD actions for FilmGenre model.
+ * CommentController implements the CRUD actions for Comment model.
  */
-class FilmgenreController extends Controller
+class CommentController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -30,12 +30,12 @@ class FilmgenreController extends Controller
     }
 
     /**
-     * Lists all FilmGenre models.
+     * Lists all Comment models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new FilmGenreSearch();
+        $searchModel = new CommentSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class FilmgenreController extends Controller
     }
 
     /**
-     * Displays a single FilmGenre model.
+     * Displays a single Comment model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -58,13 +58,13 @@ class FilmgenreController extends Controller
     }
 
     /**
-     * Creates a new FilmGenre model.
+     * Creates a new Comment model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new FilmGenre();
+        $model = new Comment();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -76,7 +76,7 @@ class FilmgenreController extends Controller
     }
 
     /**
-     * Updates an existing FilmGenre model.
+     * Updates an existing Comment model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -96,7 +96,7 @@ class FilmgenreController extends Controller
     }
 
     /**
-     * Deletes an existing FilmGenre model.
+     * Deletes an existing Comment model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -110,15 +110,15 @@ class FilmgenreController extends Controller
     }
 
     /**
-     * Finds the FilmGenre model based on its primary key value.
+     * Finds the Comment model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return FilmGenre the loaded model
+     * @return Comment the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = FilmGenre::findOne($id)) !== null) {
+        if (($model = Comment::findOne($id)) !== null) {
             return $model;
         }
 

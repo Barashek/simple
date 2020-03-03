@@ -4,16 +4,14 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model backend\models\Film */
+/* @var $model common\models\Comment */
 
-/* @var $comments \common\models\Comment[] */
-
-$this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Films', 'url' => ['index']];
+$this->title = $model->id;
+$this->params['breadcrumbs'][] = ['label' => 'Comments', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="film-view">
+<div class="comment-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -32,17 +30,13 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'name',
-            'producer_id',
+            'user_id',
+            'text:ntext',
+            'instance_name',
+            'instance_record_id',
+            'create_at',
+            'parent_id',
         ],
     ]) ?>
-
-    <div class="comments">
-        <?php
-        foreach ($comments as $comment) {
-            echo $comment->text . '<br>';
-        }
-        ?>
-    </div>
 
 </div>
